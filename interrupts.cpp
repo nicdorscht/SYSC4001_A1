@@ -19,7 +19,10 @@ int main(int argc, char** argv) {
     std::string execution;  //!< string to accumulate the execution output
 
     /******************ADD YOUR VARIABLES HERE*************************/
-
+    //Store device table as a tuple
+    int current_time = 0;
+    std::tuple<std::vector<std::string>, std::vector<int>> deviceTable = parse_args(argc, argv);
+    int context_save_time = 10;
 
 
     /******************************************************************/
@@ -29,9 +32,12 @@ int main(int argc, char** argv) {
         auto [activity, duration_intr] = parse_trace(trace);
 
         /******************ADD YOUR SIMULATION CODE HERE*************************/
-
-
-
+        /*
+        1. Check activity type, if its a CPU burst, skip step 2
+        2. Use intr_boilerplate to switch to kernal mode, save context, lookup vector in table, put vector address in PC
+        3. Lookup device in device table and add execution time
+        4. Switch to user mode, restore context
+         */
         /************************************************************************/
 
     }
