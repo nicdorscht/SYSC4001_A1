@@ -35,7 +35,7 @@ int main(int argc, char **argv)
         if (activity != "CPU"){
             auto pair = intr_boilerplate(current_time, duration_intr, context_save_time, std::get<0>(deviceTable));
             execution += pair.first;
-            current_time += pair.second;
+            current_time = pair.second;
         }
 
 
