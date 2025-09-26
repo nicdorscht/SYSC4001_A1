@@ -39,6 +39,12 @@ int main(int argc, char **argv)
         3. Lookup device in device table and add execution time
         4. Switch to user mode, restore context
          */
+
+         if (activity != "CPU"){
+            auto pair = intr_boilerplate(current_time, duration_intr, context_save_time, std::get<0>(deviceTable));
+            execution += pair.first;
+            current_time += pair.second;
+         }
         /************************************************************************/
     }
 
