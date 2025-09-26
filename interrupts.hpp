@@ -9,6 +9,7 @@
 #include<utility>
 #include<sstream>
 #include<iomanip>
+#include<stdlib.h>
 
 #include<stdio.h>
 

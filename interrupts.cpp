@@ -32,6 +32,13 @@ int main(int argc, char **argv)
     {
         auto [activity, duration_intr] = parse_trace(trace);
 
+        if (activity != "CPU"){
+            auto pair = intr_boilerplate(current_time, duration_intr, context_save_time, std::get<0>(deviceTable));
+            execution += pair.first;
+            current_time += pair.second;
+        }
+
+
         /******************ADD YOUR SIMULATION CODE HERE*************************/
         /*
         1. Check activity type, if its a CPU burst, skip step 2
