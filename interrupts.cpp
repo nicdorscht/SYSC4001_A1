@@ -24,6 +24,7 @@ int main(int argc, char **argv)
     // Store device table as a tuple
     std::tuple<std::vector<std::string>, std::vector<int>> deviceTable = parse_args(argc, argv);
     int context_save_time = 10;
+    int isr_activity_time = 40;
 
     /******************************************************************/
 
@@ -32,11 +33,54 @@ int main(int argc, char **argv)
     {
         auto [activity, duration_intr] = parse_trace(trace);
 
-        if (activity != "CPU"){
+        if(activity =="CPU"){
+            execution += std::to_string(current_time) + ", " + std::to_string(duration_intr) + ", CPU\n";
+            current_time += (unsigned long long)duration_intr;
+        }
+        else if (activity == "SYSCALL"){
             auto pair = intr_boilerplate(current_time, duration_intr, context_save_time, std::get<0>(deviceTable));
             execution += pair.first;
             current_time = pair.second;
+
+            // Execute ISR body - call device driver
+            execution += std::to_string(current_time) + ", " + std::to_string(isr_activity_time) + 
+                        ", call device driver\n";
+            current_time += isr_activity_time;
+
+            // Execute IRET (1ms)
+            execution += std::to_string(current_time) + ", 1, IRET\n";
+            current_time += 1;
+
+            
         }
+        else if(activity=="END_IO"){
+            // Handles end of I/O (HW interrupt)
+
+            // Get the device delay to calculate the I/O completion time
+
+            /*
+            int device_delay=0;
+            if (duration_intr < delays.size()) {
+                device_delay = delays[duration_intr];
+            }
+            execution += std::to_string(current_time) + ", " + std::to_string(device_delay) + 
+                        ", end of I/O " + std::to_string(duration_intr) + ": interrupt\n";
+            current_time += device_delay;
+            */
+            auto pair = intr_boilerplate(current_time, duration_intr, context_save_time, std::get<0>(deviceTable));
+            execution += pair.first;
+            current_time = pair.second;
+
+            // Execute ISR body for I/O completion handling
+            execution += std::to_string(current_time) + ", " + std::to_string(isr_activity_time) + 
+                        ", handle I/O completion\n";
+            current_time += isr_activity_time;
+
+            // Execute IRET (1ms)
+            execution += std::to_string(current_time) + ", 1, IRET\n";
+            current_time += 1;
+        }
+        
 
 
         /******************ADD YOUR SIMULATION CODE HERE*************************/

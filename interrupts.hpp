@@ -128,7 +128,7 @@ std::pair<std::string, int> intr_boilerplate(int current_time, int intr_num, int
 
 
 void write_output(std::string execution) {
-    std::ofstream output_file("execution_test.txt");
+    std::ofstream output_file("execution_test2.txt");
 
     if (output_file.is_open()) {
         output_file << execution;
