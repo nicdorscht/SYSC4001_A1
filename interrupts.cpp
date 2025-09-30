@@ -42,10 +42,15 @@ int main(int argc, char **argv)
             execution += pair.first;
             current_time = pair.second;
 
+            int device_delay = 0;
+            if (duration_intr < delays.size()) {
+                device_delay = delays[duration_intr];
+            }
+
             // Execute ISR body - call device driver
-            execution += std::to_string(current_time) + ", " + std::to_string(isr_activity_time) + 
+            execution += std::to_string(current_time) + ", " + std::to_string(device_delay) + 
                         ", call device driver\n";
-            current_time += isr_activity_time;
+            current_time += device_delay;
 
             // Execute IRET (1ms)
             execution += std::to_string(current_time) + ", 1, IRET\n";
@@ -55,26 +60,23 @@ int main(int argc, char **argv)
         }
         else if(activity=="END_IO"){
             // Handles end of I/O (HW interrupt)
+            const int device = duration_intr;
+            int device_delay = delays.at(device);
+            execution += std::to_string(current_time) + ", " +
+                        std::to_string(device_delay) + ", end of I/O " +
+                        std::to_string(device) + ": interrupt\n";
+            current_time += device_delay;
 
             // Get the device delay to calculate the I/O completion time
 
-            /*
-            int device_delay=0;
-            if (duration_intr < delays.size()) {
-                device_delay = delays[duration_intr];
-            }
-            execution += std::to_string(current_time) + ", " + std::to_string(device_delay) + 
-                        ", end of I/O " + std::to_string(duration_intr) + ": interrupt\n";
-            current_time += device_delay;
-            */
             auto pair = intr_boilerplate(current_time, duration_intr, context_save_time, std::get<0>(deviceTable));
             execution += pair.first;
             current_time = pair.second;
 
             // Execute ISR body for I/O completion handling
-            execution += std::to_string(current_time) + ", " + std::to_string(isr_activity_time) + 
-                        ", handle I/O completion\n";
-            current_time += isr_activity_time;
+            // short completion ISR; the big device time was already accounted earlier
+            execution += std::to_string(current_time) + ", 1, handle I/O completion\n";
+            current_time += 1;
 
             // Execute IRET (1ms)
             execution += std::to_string(current_time) + ", 1, IRET\n";
@@ -83,12 +85,16 @@ int main(int argc, char **argv)
         
 
 
-        /******************ADD YOUR SIMULATION CODE HERE*************************/
-        /*
-        1. Check activity type, if its a CPU burst, skip step 2
-        2. Use intr_boilerplate to switch to kernal mode, save context, lookup vector in table, put vector address in PC
-        3. Lookup device in device table and add execution time
-        4. Switch to user mode, restore context
+        /******************EXPLANATION*************************/
+        /* 
+        // For each line in the trace file
+        // If CPU: simply add that many ms to stopwatch
+        // SYSCALL: use boilerplate (switch to kernel, save, context, find vector, load ISR address)
+        //          Do ISR ("run driver" for device-table time)
+        //          Do IRET (1 ms)
+        // END_IO: device is done, call boilerplate
+        //         Tiny completion of ISR (1 ms)
+        //          Do IRET (1 ms)
          */
         /************************************************************************/
     }
