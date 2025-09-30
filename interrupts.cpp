@@ -81,6 +81,14 @@ int main(int argc, char **argv)
             // Execute IRET (1ms)
             execution += std::to_string(current_time) + ", 1, IRET\n";
             current_time += 1;
+
+            // Restore context
+            execution += std::to_string(current_time) + ", " + std::to_string(context_save_time) + ", Restore context\n";
+            current_time += context_save_time;
+
+            // Switch to user mode
+            execution += std::to_string(current_time) + ", 1, Switch to user mode\n";
+            current_time++;
         }
         
 
