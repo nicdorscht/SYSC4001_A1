@@ -53,6 +53,11 @@ int main(int argc, char **argv)
                         ", call device driver\n";
             current_time += device_delay;
 
+            // Execute ISR body - isr activity time
+            execution += std::to_string(current_time) + ", " + std::to_string(isr_activity_time) + 
+                        ", call device driver\n";
+            current_time += isr_activity_time;
+
             // Execute IRET (1ms)
             execution += std::to_string(current_time) + ", 1, IRET\n";
             current_time += 1;
@@ -75,9 +80,10 @@ int main(int argc, char **argv)
             current_time = pair.second;
 
             // Execute ISR body for I/O completion handling
-            // short completion ISR; the big device time was already accounted earlier
-            execution += std::to_string(current_time) + "," + std::to_string(device_delay) + ", handle I/O completion\n";
-            current_time += device_delay;
+            // Execute ISR body - isr activity time
+            execution += std::to_string(current_time) + ", " + std::to_string(isr_activity_time) + 
+                        ", call device driver\n";
+            current_time += isr_activity_time;
 
             // Execute IRET (1ms)
             execution += std::to_string(current_time) + ", 1, IRET\n";
