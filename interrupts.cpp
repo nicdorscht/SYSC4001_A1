@@ -3,6 +3,7 @@
  * @file interrupts.cpp
  * @author Sasisekhar Govind
  * @author Eshal Kashif
+ * @author Nicholas Dorscht
  */
 
 #include <interrupts.hpp>
@@ -33,6 +34,11 @@ int main(int argc, char **argv)
     {
         auto [activity, duration_intr] = parse_trace(trace);
 
+        int device_delay = 0;
+        if (duration_intr < delays.size()) {
+            device_delay = delays[duration_intr];
+        }
+        
         if(activity =="CPU"){
             execution += std::to_string(current_time) + ", " + std::to_string(duration_intr) + ", CPU\n";
             current_time += (unsigned long long)duration_intr;
@@ -41,11 +47,6 @@ int main(int argc, char **argv)
             auto pair = intr_boilerplate(current_time, duration_intr, context_save_time, std::get<0>(deviceTable));
             execution += pair.first;
             current_time = pair.second;
-
-            int device_delay = 0;
-            if (duration_intr < delays.size()) {
-                device_delay = delays[duration_intr];
-            }
 
             // Execute ISR body - call device driver
             execution += std::to_string(current_time) + ", " + std::to_string(device_delay) + 
@@ -75,8 +76,8 @@ int main(int argc, char **argv)
 
             // Execute ISR body for I/O completion handling
             // short completion ISR; the big device time was already accounted earlier
-            execution += std::to_string(current_time) + ", 1, handle I/O completion\n";
-            current_time += 1;
+            execution += std::to_string(current_time) + "," + std::to_string(device_delay) + ", handle I/O completion\n";
+            current_time += device_delay;
 
             // Execute IRET (1ms)
             execution += std::to_string(current_time) + ", 1, IRET\n";
