@@ -49,29 +49,30 @@ int main(int argc, char **argv)
             current_time = pair.second;
 
             // Execute ISR body - call device driver
-            execution += std::to_string(current_time) + ", " + std::to_string(device_delay) + 
-                        ", call device driver\n";
+            execution += std::to_string(current_time) + ", " + std::to_string(device_delay) + ", call device driver\n";
             current_time += device_delay;
 
-            // Execute ISR body - isr activity time
-            execution += std::to_string(current_time) + ", " + std::to_string(isr_activity_time) + 
-                        ", call device driver\n";
+            // Execute ISR body - isr activity time (for testing)
+            execution += std::to_string(current_time) + ", " + std::to_string(isr_activity_time) + ", handle ISR\n";
             current_time += isr_activity_time;
 
+        
+
+            
             // Execute IRET (1ms)
             execution += std::to_string(current_time) + ", 1, IRET\n";
             current_time += 1;
 
-            
+            // Restore context
+            execution += std::to_string(current_time) + ", " + std::to_string(context_save_time) + ", Restore context\n";
+            current_time += context_save_time;
+
+            // Switch to user mode
+            execution += std::to_string(current_time) + ", 1, Switch to user mode\n";
+            current_time++;            
         }
         else if(activity=="END_IO"){
-            // Handles end of I/O (HW interrupt)
-            const int device = duration_intr;
-            int device_delay = delays.at(device);
-            execution += std::to_string(current_time) + ", " +
-                        std::to_string(device_delay) + ", end of I/O " +
-                        std::to_string(device) + ": interrupt\n";
-            current_time += device_delay;
+        
 
             // Get the device delay to calculate the I/O completion time
 
@@ -79,10 +80,15 @@ int main(int argc, char **argv)
             execution += pair.first;
             current_time = pair.second;
 
+            // Handles end of I/O (HW interrupt)
+            const int device = duration_intr;
+            int device_delay = delays.at(device);
+            execution += std::to_string(current_time) + ", " + std::to_string(device_delay) + ", Handle device\n";
+            current_time += device_delay;
+           
             // Execute ISR body for I/O completion handling
-            // Execute ISR body - isr activity time
-            execution += std::to_string(current_time) + ", " + std::to_string(isr_activity_time) + 
-                        ", call device driver\n";
+            // Execute ISR body - isr activity time (for testing)
+            execution += std::to_string(current_time) + ", " + std::to_string(isr_activity_time) + ", handle I/O completeion\n";
             current_time += isr_activity_time;
 
             // Execute IRET (1ms)
