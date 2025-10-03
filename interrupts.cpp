@@ -24,8 +24,8 @@ int main(int argc, char **argv)
     int current_time = 0;
     // Store device table as a tuple
     std::tuple<std::vector<std::string>, std::vector<int>> deviceTable = parse_args(argc, argv);
-    int context_save_time = 10;
-    int isr_activity_time = 40;
+    int context_save_time = 30;
+    int isr_activity_time = 200;
 
     /******************************************************************/
 
@@ -55,9 +55,6 @@ int main(int argc, char **argv)
             // Execute ISR body - isr activity time (for testing)
             execution += std::to_string(current_time) + ", " + std::to_string(isr_activity_time) + ", handle ISR\n";
             current_time += isr_activity_time;
-
-        
-
             
             // Execute IRET (1ms)
             execution += std::to_string(current_time) + ", 1, IRET\n";
@@ -104,8 +101,6 @@ int main(int argc, char **argv)
             current_time++;
         }
         
-
-
         /******************EXPLANATION*************************/
         /* 
         // For each line in the trace file
