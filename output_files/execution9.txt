@@ -1,0 +1,190 @@
+0, 1, switch to kernel mode
+1, 20, context saved
+21, 1, find vector 19 in memory position 0x0026
+22, 1, load address 0X0765 into the PC
+23, 652, call device driver
+675, 90, handle ISR
+765, 1, IRET
+766, 20, Restore context
+786, 1, Switch to user mode
+787, 154, CPU
+941, 1, switch to kernel mode
+942, 20, context saved
+962, 1, find vector 19 in memory position 0x0026
+963, 1, load address 0X0765 into the PC
+964, 652, Handle device
+1616, 90, handle I/O completeion
+1706, 1, IRET
+1707, 20, Restore context
+1727, 1, Switch to user mode
+1728, 1, switch to kernel mode
+1729, 20, context saved
+1749, 1, find vector 16 in memory position 0x0020
+1750, 1, load address 0X02DF into the PC
+1751, 956, call device driver
+2707, 90, handle ISR
+2797, 1, IRET
+2798, 20, Restore context
+2818, 1, Switch to user mode
+2819, 87, CPU
+2906, 1, switch to kernel mode
+2907, 20, context saved
+2927, 1, find vector 16 in memory position 0x0020
+2928, 1, load address 0X02DF into the PC
+2929, 956, Handle device
+3885, 90, handle I/O completeion
+3975, 1, IRET
+3976, 20, Restore context
+3996, 1, Switch to user mode
+3997, 1, switch to kernel mode
+3998, 20, context saved
+4018, 1, find vector 5 in memory position 0x000A
+4019, 1, load address 0X048B into the PC
+4020, 211, call device driver
+4231, 90, handle ISR
+4321, 1, IRET
+4322, 20, Restore context
+4342, 1, Switch to user mode
+4343, 193, CPU
+4536, 1, switch to kernel mode
+4537, 20, context saved
+4557, 1, find vector 5 in memory position 0x000A
+4558, 1, load address 0X048B into the PC
+4559, 211, Handle device
+4770, 90, handle I/O completeion
+4860, 1, IRET
+4861, 20, Restore context
+4881, 1, Switch to user mode
+4882, 1, switch to kernel mode
+4883, 20, context saved
+4903, 1, find vector 5 in memory position 0x000A
+4904, 1, load address 0X048B into the PC
+4905, 211, call device driver
+5116, 90, handle ISR
+5206, 1, IRET
+5207, 20, Restore context
+5227, 1, Switch to user mode
+5228, 198, CPU
+5426, 1, switch to kernel mode
+5427, 20, context saved
+5447, 1, find vector 5 in memory position 0x000A
+5448, 1, load address 0X048B into the PC
+5449, 211, Handle device
+5660, 90, handle I/O completeion
+5750, 1, IRET
+5751, 20, Restore context
+5771, 1, Switch to user mode
+5772, 1, switch to kernel mode
+5773, 20, context saved
+5793, 1, find vector 13 in memory position 0x001A
+5794, 1, load address 0X06C7 into the PC
+5795, 636, call device driver
+6431, 90, handle ISR
+6521, 1, IRET
+6522, 20, Restore context
+6542, 1, Switch to user mode
+6543, 52, CPU
+6595, 1, switch to kernel mode
+6596, 20, context saved
+6616, 1, find vector 13 in memory position 0x001A
+6617, 1, load address 0X06C7 into the PC
+6618, 636, Handle device
+7254, 90, handle I/O completeion
+7344, 1, IRET
+7345, 20, Restore context
+7365, 1, Switch to user mode
+7366, 1, switch to kernel mode
+7367, 20, context saved
+7387, 1, find vector 11 in memory position 0x0016
+7388, 1, load address 0X01F8 into the PC
+7389, 523, call device driver
+7912, 90, handle ISR
+8002, 1, IRET
+8003, 20, Restore context
+8023, 1, Switch to user mode
+8024, 63, CPU
+8087, 1, switch to kernel mode
+8088, 20, context saved
+8108, 1, find vector 11 in memory position 0x0016
+8109, 1, load address 0X01F8 into the PC
+8110, 523, Handle device
+8633, 90, handle I/O completeion
+8723, 1, IRET
+8724, 20, Restore context
+8744, 1, Switch to user mode
+8745, 1, switch to kernel mode
+8746, 20, context saved
+8766, 1, find vector 6 in memory position 0x000C
+8767, 1, load address 0X0639 into the PC
+8768, 265, call device driver
+9033, 90, handle ISR
+9123, 1, IRET
+9124, 20, Restore context
+9144, 1, Switch to user mode
+9145, 69, CPU
+9214, 1, switch to kernel mode
+9215, 20, context saved
+9235, 1, find vector 6 in memory position 0x000C
+9236, 1, load address 0X0639 into the PC
+9237, 265, Handle device
+9502, 90, handle I/O completeion
+9592, 1, IRET
+9593, 20, Restore context
+9613, 1, Switch to user mode
+9614, 1, switch to kernel mode
+9615, 20, context saved
+9635, 1, find vector 1 in memory position 0x0002
+9636, 1, load address 0X029C into the PC
+9637, 100, call device driver
+9737, 90, handle ISR
+9827, 1, IRET
+9828, 20, Restore context
+9848, 1, Switch to user mode
+9849, 175, CPU
+10024, 1, switch to kernel mode
+10025, 20, context saved
+10045, 1, find vector 1 in memory position 0x0002
+10046, 1, load address 0X029C into the PC
+10047, 100, Handle device
+10147, 90, handle I/O completeion
+10237, 1, IRET
+10238, 20, Restore context
+10258, 1, Switch to user mode
+10259, 1, switch to kernel mode
+10260, 20, context saved
+10280, 1, find vector 4 in memory position 0x0008
+10281, 1, load address 0X0292 into the PC
+10282, 250, call device driver
+10532, 90, handle ISR
+10622, 1, IRET
+10623, 20, Restore context
+10643, 1, Switch to user mode
+10644, 20, CPU
+10664, 1, switch to kernel mode
+10665, 20, context saved
+10685, 1, find vector 4 in memory position 0x0008
+10686, 1, load address 0X0292 into the PC
+10687, 250, Handle device
+10937, 90, handle I/O completeion
+11027, 1, IRET
+11028, 20, Restore context
+11048, 1, Switch to user mode
+11049, 1, switch to kernel mode
+11050, 20, context saved
+11070, 1, find vector 5 in memory position 0x000A
+11071, 1, load address 0X048B into the PC
+11072, 211, call device driver
+11283, 90, handle ISR
+11373, 1, IRET
+11374, 20, Restore context
+11394, 1, Switch to user mode
+11395, 159, CPU
+11554, 1, switch to kernel mode
+11555, 20, context saved
+11575, 1, find vector 5 in memory position 0x000A
+11576, 1, load address 0X048B into the PC
+11577, 211, Handle device
+11788, 90, handle I/O completeion
+11878, 1, IRET
+11879, 20, Restore context
+11899, 1, Switch to user mode
