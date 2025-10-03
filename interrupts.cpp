@@ -104,18 +104,6 @@ int main(int argc, char **argv)
             current_time++;
         }
         
-        /******************EXPLANATION*************************/
-        /* 
-        // For each line in the trace file
-        // If CPU: simply add that many ms to stopwatch
-        // SYSCALL: use boilerplate (switch to kernel, save, context, find vector, load ISR address)
-        //          Do ISR ("run driver" for device-table time)
-        //          Do IRET (1 ms)
-        // END_IO: device is done, call boilerplate
-        //         Tiny completion of ISR (1 ms)
-        //          Do IRET (1 ms)
-         */
-        /************************************************************************/
     }
 
     input_file.close();
