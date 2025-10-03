@@ -45,20 +45,17 @@ int main(int argc, char **argv)
         }
         else if (activity == "SYSCALL"){
             auto pair = intr_boilerplate(current_time, duration_intr, context_save_time, std::get<0>(deviceTable));
-            execution += pair.first; //Can add comments with current time,duration, and SYSCALL
+            execution += pair.first; 
             current_time = pair.second;
 
             // Execute ISR body - call device driver
-            execution += std::to_string(current_time) + ", " + std::to_string(device_delay) + ", SYSCALL ISR: call device driver\n"; //Put SYSCALL ISR instead
+            execution += std::to_string(current_time) + ", " + std::to_string(device_delay) + ", SYSCALL ISR: call device driver\n"; 
             current_time += device_delay;
 
             // Execute ISR body - isr activity time (for testing)
-            execution += std::to_string(current_time) + ", " + std::to_string(isr_activity_time) + ", handle ISR\n";
+            execution += std::to_string(current_time) + ", " + std::to_string(isr_activity_time) + ", handle ISR (activity time)\n";
             current_time += isr_activity_time;
 
-        
-
-            
             // Execute IRET (1ms)
             execution += std::to_string(current_time) + ", 1, IRET\n";
             current_time += 1;
@@ -83,12 +80,12 @@ int main(int argc, char **argv)
             // Handles end of I/O (HW interrupt)
             const int device = duration_intr;
             int device_delay = delays.at(device);
-            execution += std::to_string(current_time) + ", " + std::to_string(device_delay) + ", Handle device\n";
+            execution += std::to_string(current_time) + ", " + std::to_string(device_delay) + ", END_IO ISR: Handle device\n";
             current_time += device_delay;
            
             // Execute ISR body for I/O completion handling
             // Execute ISR body - isr activity time (for testing)
-            execution += std::to_string(current_time) + ", " + std::to_string(isr_activity_time) + ", handle I/O completeion\n";
+            execution += std::to_string(current_time) + ", " + std::to_string(isr_activity_time) + ", handle I/O completeion (activity time)\n";
             current_time += isr_activity_time;
 
             // Execute IRET (1ms)
