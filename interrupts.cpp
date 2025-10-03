@@ -45,11 +45,11 @@ int main(int argc, char **argv)
         }
         else if (activity == "SYSCALL"){
             auto pair = intr_boilerplate(current_time, duration_intr, context_save_time, std::get<0>(deviceTable));
-            execution += pair.first;
+            execution += pair.first; //Can add comments with current time,duration, and SYSCALL
             current_time = pair.second;
 
             // Execute ISR body - call device driver
-            execution += std::to_string(current_time) + ", " + std::to_string(device_delay) + ", call device driver\n";
+            execution += std::to_string(current_time) + ", " + std::to_string(device_delay) + ", SYSCALL ISR: call device driver\n"; //Put SYSCALL ISR instead
             current_time += device_delay;
 
             // Execute ISR body - isr activity time (for testing)
@@ -69,7 +69,7 @@ int main(int argc, char **argv)
 
             // Switch to user mode
             execution += std::to_string(current_time) + ", 1, Switch to user mode\n";
-            current_time++;            
+            current_time++;           //Added value of duration 
         }
         else if(activity=="END_IO"){
         
