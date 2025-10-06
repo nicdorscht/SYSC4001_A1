@@ -1,0 +1,190 @@
+0, 1, switch to kernel mode
+1, 10, context saved
+11, 1, find vector 18 in memory position 0x0024
+12, 1, load address 0X060A into the PC
+13, 123, SYSCALL ISR: call device driver
+136, 200, handle ISR (activity time)
+336, 1, IRET
+337, 10, Restore context
+347, 1, Switch to user mode
+348, 164, CPU
+512, 1, switch to kernel mode
+513, 10, context saved
+523, 1, find vector 18 in memory position 0x0024
+524, 1, load address 0X060A into the PC
+525, 123, END_IO ISR: Handle device
+648, 200, handle I/O completeion (activity time)
+848, 1, IRET
+849, 10, Restore context
+859, 1, Switch to user mode
+860, 1, switch to kernel mode
+861, 10, context saved
+871, 1, find vector 4 in memory position 0x0008
+872, 1, load address 0X0292 into the PC
+873, 250, SYSCALL ISR: call device driver
+1123, 200, handle ISR (activity time)
+1323, 1, IRET
+1324, 10, Restore context
+1334, 1, Switch to user mode
+1335, 109, CPU
+1444, 1, switch to kernel mode
+1445, 10, context saved
+1455, 1, find vector 4 in memory position 0x0008
+1456, 1, load address 0X0292 into the PC
+1457, 250, END_IO ISR: Handle device
+1707, 200, handle I/O completeion (activity time)
+1907, 1, IRET
+1908, 10, Restore context
+1918, 1, Switch to user mode
+1919, 1, switch to kernel mode
+1920, 10, context saved
+1930, 1, find vector 18 in memory position 0x0024
+1931, 1, load address 0X060A into the PC
+1932, 123, SYSCALL ISR: call device driver
+2055, 200, handle ISR (activity time)
+2255, 1, IRET
+2256, 10, Restore context
+2266, 1, Switch to user mode
+2267, 93, CPU
+2360, 1, switch to kernel mode
+2361, 10, context saved
+2371, 1, find vector 18 in memory position 0x0024
+2372, 1, load address 0X060A into the PC
+2373, 123, END_IO ISR: Handle device
+2496, 200, handle I/O completeion (activity time)
+2696, 1, IRET
+2697, 10, Restore context
+2707, 1, Switch to user mode
+2708, 1, switch to kernel mode
+2709, 10, context saved
+2719, 1, find vector 5 in memory position 0x000A
+2720, 1, load address 0X048B into the PC
+2721, 211, SYSCALL ISR: call device driver
+2932, 200, handle ISR (activity time)
+3132, 1, IRET
+3133, 10, Restore context
+3143, 1, Switch to user mode
+3144, 181, CPU
+3325, 1, switch to kernel mode
+3326, 10, context saved
+3336, 1, find vector 5 in memory position 0x000A
+3337, 1, load address 0X048B into the PC
+3338, 211, END_IO ISR: Handle device
+3549, 200, handle I/O completeion (activity time)
+3749, 1, IRET
+3750, 10, Restore context
+3760, 1, Switch to user mode
+3761, 1, switch to kernel mode
+3762, 10, context saved
+3772, 1, find vector 3 in memory position 0x0006
+3773, 1, load address 0X042B into the PC
+3774, 300, SYSCALL ISR: call device driver
+4074, 200, handle ISR (activity time)
+4274, 1, IRET
+4275, 10, Restore context
+4285, 1, Switch to user mode
+4286, 173, CPU
+4459, 1, switch to kernel mode
+4460, 10, context saved
+4470, 1, find vector 3 in memory position 0x0006
+4471, 1, load address 0X042B into the PC
+4472, 300, END_IO ISR: Handle device
+4772, 200, handle I/O completeion (activity time)
+4972, 1, IRET
+4973, 10, Restore context
+4983, 1, Switch to user mode
+4984, 1, switch to kernel mode
+4985, 10, context saved
+4995, 1, find vector 2 in memory position 0x0004
+4996, 1, load address 0X0695 into the PC
+4997, 150, SYSCALL ISR: call device driver
+5147, 200, handle ISR (activity time)
+5347, 1, IRET
+5348, 10, Restore context
+5358, 1, Switch to user mode
+5359, 41, CPU
+5400, 1, switch to kernel mode
+5401, 10, context saved
+5411, 1, find vector 2 in memory position 0x0004
+5412, 1, load address 0X0695 into the PC
+5413, 150, END_IO ISR: Handle device
+5563, 200, handle I/O completeion (activity time)
+5763, 1, IRET
+5764, 10, Restore context
+5774, 1, Switch to user mode
+5775, 1, switch to kernel mode
+5776, 10, context saved
+5786, 1, find vector 9 in memory position 0x0012
+5787, 1, load address 0X036C into the PC
+5788, 156, SYSCALL ISR: call device driver
+5944, 200, handle ISR (activity time)
+6144, 1, IRET
+6145, 10, Restore context
+6155, 1, Switch to user mode
+6156, 67, CPU
+6223, 1, switch to kernel mode
+6224, 10, context saved
+6234, 1, find vector 9 in memory position 0x0012
+6235, 1, load address 0X036C into the PC
+6236, 156, END_IO ISR: Handle device
+6392, 200, handle I/O completeion (activity time)
+6592, 1, IRET
+6593, 10, Restore context
+6603, 1, Switch to user mode
+6604, 1, switch to kernel mode
+6605, 10, context saved
+6615, 1, find vector 8 in memory position 0x0010
+6616, 1, load address 0X06EF into the PC
+6617, 1000, SYSCALL ISR: call device driver
+7617, 200, handle ISR (activity time)
+7817, 1, IRET
+7818, 10, Restore context
+7828, 1, Switch to user mode
+7829, 154, CPU
+7983, 1, switch to kernel mode
+7984, 10, context saved
+7994, 1, find vector 8 in memory position 0x0010
+7995, 1, load address 0X06EF into the PC
+7996, 1000, END_IO ISR: Handle device
+8996, 200, handle I/O completeion (activity time)
+9196, 1, IRET
+9197, 10, Restore context
+9207, 1, Switch to user mode
+9208, 1, switch to kernel mode
+9209, 10, context saved
+9219, 1, find vector 8 in memory position 0x0010
+9220, 1, load address 0X06EF into the PC
+9221, 1000, SYSCALL ISR: call device driver
+10221, 200, handle ISR (activity time)
+10421, 1, IRET
+10422, 10, Restore context
+10432, 1, Switch to user mode
+10433, 198, CPU
+10631, 1, switch to kernel mode
+10632, 10, context saved
+10642, 1, find vector 8 in memory position 0x0010
+10643, 1, load address 0X06EF into the PC
+10644, 1000, END_IO ISR: Handle device
+11644, 200, handle I/O completeion (activity time)
+11844, 1, IRET
+11845, 10, Restore context
+11855, 1, Switch to user mode
+11856, 1, switch to kernel mode
+11857, 10, context saved
+11867, 1, find vector 2 in memory position 0x0004
+11868, 1, load address 0X0695 into the PC
+11869, 150, SYSCALL ISR: call device driver
+12019, 200, handle ISR (activity time)
+12219, 1, IRET
+12220, 10, Restore context
+12230, 1, Switch to user mode
+12231, 37, CPU
+12268, 1, switch to kernel mode
+12269, 10, context saved
+12279, 1, find vector 2 in memory position 0x0004
+12280, 1, load address 0X0695 into the PC
+12281, 150, END_IO ISR: Handle device
+12431, 200, handle I/O completeion (activity time)
+12631, 1, IRET
+12632, 10, Restore context
+12642, 1, Switch to user mode
